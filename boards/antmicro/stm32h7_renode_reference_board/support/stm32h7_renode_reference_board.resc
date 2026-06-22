@@ -1,0 +1,16 @@
+:name: STM32H7 Renode Reference Board
+:description: This script is prepared to run Zephyr on STM32H7 Renode Reference Board platform.
+
+$name?="STM32H7 Renode Reference Board"
+mach create $name
+machine LoadPlatformDescription $ORIGIN/stm32h7_renode_reference_board.repl
+
+showAnalyzer sysbus.usart2
+
+macro reset
+"""
+    sysbus LoadELF $elf
+    cpu EnableZephyrMode
+    cpu VectorTableOffset `sysbus GetSymbolAddress "_vector_table"`
+"""
+runMacro $reset

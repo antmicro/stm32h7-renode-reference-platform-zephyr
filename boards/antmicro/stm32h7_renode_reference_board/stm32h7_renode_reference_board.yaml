@@ -29,4 +29,12 @@ supported:
   - usbd
   - uart
   - watchdog
+simulation:
+  - name: renode
+    exec: renode
+testing:
+  timeout_multiplier: 2
+  renode:
+    uart: sysbus.usart2
+    resc: boards/antmicro/stm32h7_renode_reference_board/support/stm32h7_renode_reference_board.resc
 vendor: antmicro

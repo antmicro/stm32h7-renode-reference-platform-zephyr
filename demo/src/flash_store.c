@@ -10,7 +10,7 @@
 #include <zephyr/device.h>
 #include <zephyr/drivers/flash.h>
 #include <zephyr/storage/flash_map.h>
-#include <zephyr/fs/nvs.h>
+#include <zephyr/kvss/nvs.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/toolchain.h>
 #include <zephyr/sys/util.h>
@@ -21,8 +21,8 @@ LOG_MODULE_REGISTER(flash_store);
 #define NVS_PARTITION storage_partition
 
 static struct nvs_fs fs = {
-	.flash_device = FIXED_PARTITION_DEVICE(NVS_PARTITION),
-	.offset = FIXED_PARTITION_OFFSET(NVS_PARTITION),
+	.flash_device = PARTITION_DEVICE(NVS_PARTITION),
+	.offset = PARTITION_OFFSET(NVS_PARTITION),
 	.sector_count = 3U,
 };
 

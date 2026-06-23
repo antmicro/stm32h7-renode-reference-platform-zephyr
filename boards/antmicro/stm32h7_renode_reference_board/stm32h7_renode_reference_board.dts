@@ -16,6 +16,7 @@
 	compatible = "antmicro,stm32h7_renode_reference_board";
 
 	chosen {
+		zephyr,crc = &crc;
 		zephyr,entropy = &rng;
 		zephyr,console = &usart2;
 		zephyr,shell-uart = &usart2;
@@ -131,6 +132,10 @@
 			zephyr,code = <INPUT_KEY_4>;
 		};
 	};
+};
+
+&pwr {
+	power-supply = "ldo";
 };
 
 &clk_lsi {
@@ -360,12 +365,13 @@ zephyr_udc0: &usbotg_fs {
 
 &flash0 {
 	partitions {
-		compatible = "fixed-partitions";
+		ranges;
 		#address-cells = <1>;
 		#size-cells = <1>;
 
 		/* 128KB for bootloader */
 		boot_partition: partition@0 {
+			compatible = "zephyr,mapped-partition";
 			label = "mcuboot";
 			reg = <0x00000000 DT_SIZE_K(128)>;
 			read-only;
@@ -373,12 +379,14 @@ zephyr_udc0: &usbotg_fs {
 
 		/* application image slot: 384KB */
 		slot0_partition: partition@20000 {
+			compatible = "zephyr,mapped-partition";
 			label = "image-0";
 			reg = <0x00020000 DT_SIZE_K(384)>;
 		};
 
 		/* backup slot: 512KB */
 		slot1_partition: partition@80000 {
+			compatible = "zephyr,mapped-partition";
 			label = "image-1";
 			reg = <0x00080000 DT_SIZE_K(512)>;
 		};
@@ -392,6 +400,18 @@ zephyr_udc0: &usbotg_fs {
 };
 
 &rng {
+	status = "okay";
+};
+
+&cryp {
+	status = "okay";
+};
+
+&hash {
+	status = "okay";
+};
+
+&crc {
 	status = "okay";
 };
 

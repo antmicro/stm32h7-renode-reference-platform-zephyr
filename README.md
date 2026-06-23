@@ -46,32 +46,32 @@ west simulate
 
 ```sh
 Available commands:
-  can      : CAN controller commands
-  clear    : Clear screen.
-  date     : Date commands
-  device   : Device commands
-  devmem   : Read/write physical memory
-             Usage:
-             Read memory at address with optional width:
-             devmem <address> [<width>]
-             Write memory at address with mandatory width and value:
-             devmem <address> <width> <value>
-  gpio     : GPIO commands
-  help     : Prints the help message.
-  history  : Command history.
-  hwinfo   : HWINFO commands
-  i2c      : I2C commands
-  input    : Input commands
-  kernel   : Kernel commands
-  led      : LED commands
-  net      : Networking commands
-  pot      : Potentiometer commands
-  rem      : Ignore lines beginning with 'rem '
-  resize   : Console gets terminal screen size or assumes default in case the
-             readout fails. It must be executed after each terminal width change
-             to ensure correct text display.
-  retval   : Print return value of most recent command
-  sensor   : Sensor commands
-  shell    : Useful, not Unix-like shell commands.
-  usbdev   : USB mass-storage device commands
+  can          : CAN controller commands
+  clear        : Clear screen.
+  date         : Date commands
+  device       : Device commands
+  devmem       : Read/write physical memory
+                 Usage:
+                 Read memory at address with optional width:
+                 devmem <address> [<width>]
+                 Write memory at address with mandatory width and value:
+                 devmem <address> <width> <value>
+  flash_store  : Flash storage commands
+  help         : Prints the help message.
+  history      : Command history.
+  hwinfo       : HWINFO commands
+  i2c          : I2C commands
+  input        : Input commands
+  kernel       : Kernel commands
+  led          : LED commands
+  net          : Networking commands
+  pot          : Potentiometer commands
+  rem          : Ignore lines beginning with 'rem '
+  resize       : Console gets terminal screen size or assumes default in case
+                 the readout fails. It must be executed after each terminal
+                 width change to ensure correct text display.
+  retval       : Print return value of most recent command
+  sensor       : Sensor commands
+  shell        : Useful, not Unix-like shell commands.
+  usbdev       : USB mass-storage device commands
 ```

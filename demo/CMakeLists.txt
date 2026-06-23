@@ -6,6 +6,6 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(renode_demo LANGUAGES C)
 
-target_sources(app PRIVATE src/potentiometer.c)
+target_sources(app PRIVATE src/potentiometer.c src/flash_store.c)
 
 target_sources_ifdef(CONFIG_DEMO_USB app PRIVATE src/usbdev.c)

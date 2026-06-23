@@ -3,6 +3,12 @@
 
 menu "Demo options"
 
+config DEMO_FLASH_STORE_MSG_BUF_SIZE
+	int "Maximum flash_store message size"
+	default 128
+	help
+	  Maximum size of custom message saved to flash storage.
+
 config DEMO_USB
 	bool "USB device shell"
 	select USB_DEVICE_STACK_NEXT

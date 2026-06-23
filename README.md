@@ -73,4 +73,5 @@ Available commands:
   retval   : Print return value of most recent command
   sensor   : Sensor commands
   shell    : Useful, not Unix-like shell commands.
+  usbdev   : USB mass-storage device commands
 ```

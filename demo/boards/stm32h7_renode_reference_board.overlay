@@ -1,0 +1,9 @@
+/ {
+	// 128KB ramdisk
+	ramdisk0 {
+		compatible = "zephyr,ram-disk";
+		disk-name = "RAM";
+		sector-size = <512>;
+		sector-count = <256>;
+	};
+};

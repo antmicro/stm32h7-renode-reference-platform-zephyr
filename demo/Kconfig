@@ -1,0 +1,40 @@
+# Copyright (c) 2026 Antmicro <www.antmicro.com>
+# SPDX-License-Identifier: Apache-2.0
+
+menu "Demo options"
+
+config DEMO_USB
+	bool "USB device shell"
+	select USB_DEVICE_STACK_NEXT
+	select USBD_MSC_CLASS
+	help
+	  Enable USB device shell.
+
+if DEMO_USB
+
+if LOG
+
+choice USBD_LOG_LEVEL_CHOICE
+	default USBD_LOG_LEVEL_WRN
+
+endchoice
+
+choice USBD_MSC_LOG_LEVEL_CHOICE
+	default USBD_MSC_LOG_LEVEL_OFF
+
+endchoice
+
+endif # LOG
+
+config DEMO_USB_MAX_POWER
+	int "USB device bMaxPower value"
+	default 125
+	range 0 250
+	help
+	  bMaxPower value in the usb device configuration in 2 mA units.
+
+endif # DEMO_USB
+
+endmenu
+
+source "Kconfig.zephyr"

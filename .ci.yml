@@ -31,7 +31,8 @@ Yaml Lint:
 
 Build Demo:
   stage: build
-  image: ghcr.io/zephyrproject-rtos/ci:v0.28.6
+  image: ghcr.io/zephyrproject-rtos/ci:v0.29.2
+  dependencies: []
   before_script:
     - west init -l .
     - west update

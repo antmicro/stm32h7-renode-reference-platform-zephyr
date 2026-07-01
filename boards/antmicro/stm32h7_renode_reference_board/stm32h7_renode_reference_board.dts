@@ -7,6 +7,7 @@
 
 #include <zephyr/dt-bindings/gpio/gpio.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <zephyr/dt-bindings/memory-attr/memory-attr-arm.h>
 #include <st/h7/stm32h753Xi.dtsi>
 #include "stm32h7_renode_reference_board-pinctrl.dtsi"
 
@@ -23,7 +24,6 @@
 		zephyr,itcm = &itcm;
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
-		zephyr,flash-controller = &mt25ql512ab1;
 		zephyr,code-partition = &slot0_partition;
 	};
 
@@ -41,7 +41,7 @@
 		pwm-led2 = &green_pwm_led_2;
 		pwm-led3 = &green_pwm_led_3;
 		rtc = &rtc;
-		spi-flash0 = &mt25ql512ab1;
+		spi-flash0 = &mt25ql01g;
 		sw0 = &btn0;
 		sw1 = &btn1;
 		sw2 = &btn2;
@@ -176,6 +176,11 @@
 	d2ppre1 = <2>;
 	d2ppre2 = <2>;
 	d3ppre = <2>;
+};
+
+&ext_memory {
+	reg = <0x90000000 DT_SIZE_M(128)>; /* 1Gb = 128MB */
+	zephyr,memory-attr = <DT_MEM_ARM_MPU_FLASH>;
 };
 
 &gpioc {
@@ -328,18 +333,17 @@ zephyr_udc0: &usbotg_fs {
 	             &quadspi_bk1_io0_pf8 &quadspi_bk1_io1_pf9
 	             &quadspi_bk1_io2_pf7 &quadspi_bk1_io3_pf6>;
 	pinctrl-names = "default";
+	flash-id = <1>;
 	status = "okay";
 
-	/* Micron external flash */
-	mt25ql512ab1: qspi-nor-flash@0 {
+	mt25ql01g: qspi-nor-flash@0 {
 		compatible = "st,stm32-qspi-nor";
 		reg = <0>;
-		size = <DT_SIZE_M(512)>; /* 512 Mbits */
-		qspi-max-frequency = <72000000>;
+		size = <DT_SIZE_M(1024)>; /* 1Gb = 128MB */
+		qspi-max-frequency = <DT_FREQ_M(72)>;
 		cs-high-time = <4>; /* >= 50 ns */
 		spi-bus-width = <4>;
 		reset-cmd;
-		status = "okay";
 
 		partitions {
 			compatible = "fixed-partitions";
@@ -347,17 +351,10 @@ zephyr_udc0: &usbotg_fs {
 			#size-cells = <1>;
 
 			storage_partition: partition@0 {
+				label = "storage";
 				reg = <0x0 DT_SIZE_M(64)>;
 			};
 		};
-	};
-
-	mt25ql512ab2: qspi-nor-flash@1 {
-		compatible = "st,stm32-qspi-nor";
-		reg = <1>;
-		size = <DT_SIZE_M(512)>; /* 512 Mbits */
-		qspi-max-frequency = <72000000>;
-		status = "okay";
 	};
 };
 

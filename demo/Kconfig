@@ -41,6 +41,82 @@ config DEMO_USB_MAX_POWER
 
 endif # DEMO_USB
 
+config DEMO_MULTINODE
+	bool "Multinode demo shell"
+	default y
+	select NETWORKING
+	select NET_IPV4
+	select NET_UDP
+	select NET_SOCKETS
+	select NET_L2_ETHERNET
+	help
+	  Enable multinode demo shell.
+
+if DEMO_MULTINODE
+
+menu "Network options"
+
+config DEMO_MULTINODE_SERVER_IP
+	string "Server IP"
+	default "10.123.123.1"
+	help
+	  IPv4 address for server node.
+
+config DEMO_MULTINODE_SERVER_PORT
+	int "Server port"
+	range 1 65535
+	default 4242
+	help
+	  Port number for the server.
+
+config DEMO_MULTINODE_CLIENT_IP
+	string "Client IP"
+	default "10.123.123.2"
+	help
+	  IPv4 address for client node.
+
+config DEMO_MULTINODE_NETMASK
+	string "Network mask"
+	default "255.255.255.0"
+	help
+	  Network mask for client and server.
+
+config DEMO_MULTINODE_LINK_TIMEOUT
+	int "Link wait time"
+	default 10000
+	help
+	  How long to wait for link to be up before timing out (in ms).
+
+config DEMO_MULTINODE_RX_TIMEOUT
+	int "Response timeout"
+	default 1000
+	help
+	  How long to wait for response (in ms).
+
+config DEMO_MULTINODE_RX_BUF_SIZE
+	int "RX buffer size"
+	default 64
+	help
+	  Rx buffer size (in bytes).
+
+config DEMO_MULTINODE_TX_BUF_SIZE
+	int "TX buffer size"
+	default 64
+	help
+	  Tx buffer size (in bytes).
+
+endmenu
+
+config DEMO_MULTINODE_SERVER_THRD_STACK_SIZE
+	int "Server thread stack size"
+	default 2048
+
+config DEMO_MULTINODE_SERVER_THRD_PRIO
+	int "Server thread priority"
+	default 5
+
+endif # DEMO_MULTINODE
+
 endmenu
 
 source "Kconfig.zephyr"

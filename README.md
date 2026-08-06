@@ -42,6 +42,16 @@ west flash
 west simulate
 ```
 
+### Multinode demo
+
+To test the `multinode` demo commands inside Renode, you need to setup two simulated instances of
+the board. This setup is provided in `support/multinode_demo.resc`. To run the simulation, after
+building the demo, run:
+
+```sh
+renode support/multinode_demo.resc
+```
+
 # Demo
 
 ```sh
@@ -64,6 +74,7 @@ Available commands:
   input        : Input commands
   kernel       : Kernel commands
   led          : LED commands
+  multinode    : Multinode demo commands
   net          : Networking commands
   pot          : Potentiometer commands
   rem          : Ignore lines beginning with 'rem '

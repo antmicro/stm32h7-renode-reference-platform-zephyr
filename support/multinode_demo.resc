@@ -1,0 +1,31 @@
+$repl?=$ORIGIN/../boards/antmicro/stm32h7_renode_reference_board/support/stm32h7_renode_reference_board.repl
+$elf?=$ORIGIN/../build/zephyr/zephyr.elf
+
+emulation CreateSwitch "switch1"
+
+$name="Node1"
+mach create $name
+machine LoadPlatformDescription $repl
+connector Connect sysbus.ethernet switch1
+
+showAnalyzer sysbus.usart2
+
+$name="Node2"
+mach create $name
+machine LoadPlatformDescription $repl
+connector Connect sysbus.ethernet switch1
+
+showAnalyzer sysbus.usart2
+
+macro reset
+"""
+    mach set 0
+    sysbus LoadELF $elf
+    cpu VectorTableOffset `sysbus GetSymbolAddress "_vector_table"`
+
+    mach set 1
+    sysbus LoadELF $elf
+    cpu VectorTableOffset `sysbus GetSymbolAddress "_vector_table"`
+"""
+runMacro $reset
+

@@ -1,4 +1,4 @@
-$repl?=$ORIGIN/../boards/antmicro/stm32h7_renode_reference_board/support/stm32h7_renode_reference_board.repl
+$repl?=$ORIGIN/../../zephyr/boards/antmicro/stm32h7_renode_reference_board/support/stm32h7_renode_reference_board.repl
 $elf?=$ORIGIN/../build/zephyr/zephyr.elf
 
 emulation CreateSwitch "switch1"

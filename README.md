@@ -2,10 +2,8 @@
 
 Copyright (c) 2026 [Antmicro](https://www.antmicro.com)
 
-This repository contains files for Antmicro's
-[Renode Reference Platform Board](https://openhardware.antmicro.com/boards/stm32h7-renode-reference-platform/?tab=features)
-configured for [Zephyr](https://github.com/zephyrproject-rtos/zephyr) as an external module, as well as
-a demo application showcasing board features.
+This repository contains a Zephyr demo application for Antmicro's
+[Renode Reference Platform Board](https://openhardware.antmicro.com/boards/stm32h7-renode-reference-platform/?tab=features).
 
 # Quick start
 

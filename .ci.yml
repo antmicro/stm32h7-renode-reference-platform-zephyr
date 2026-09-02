@@ -8,6 +8,7 @@ variables:
   SCALENODE_DISK: 10
   DEBIAN_FRONTEND: noninteractive
   ZEPHYR_SDK_INSTALL_DIR: /opt/toolchains
+  ZEPHYR_REV: 3062245d5980f5c89a81cff28a7389e55396d82a
 
 Clang Format:
   stage: lint
@@ -34,8 +35,11 @@ Build Demo:
   image: ghcr.io/zephyrproject-rtos/ci:v0.29.2
   dependencies: []
   before_script:
+    - |
+      echo "Zephyr Version: ${ZEPHYR_REV}"
+      sed -i "s|revision: .*|revision: ${ZEPHYR_REV}|" west.yml
     - west init -l .
-    - west update
+    - west update -n -o=--depth=1
   script:
     - west build -b stm32h7_renode_reference_board demo
   artifacts:

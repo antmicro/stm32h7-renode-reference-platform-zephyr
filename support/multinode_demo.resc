@@ -2,11 +2,13 @@ $repl?=$ORIGIN/../../zephyr/boards/antmicro/stm32h7_renode_reference_board/suppo
 $elf?=$ORIGIN/../build/zephyr/zephyr.elf
 
 emulation CreateSwitch "switch1"
+emulation CreateCANHub "canHub1"
 
 $name="Node1"
 mach create $name
 machine LoadPlatformDescription $repl
 connector Connect sysbus.ethernet switch1
+connector Connect sysbus.fdcan1 canHub1
 
 showAnalyzer sysbus.usart2
 
@@ -14,6 +16,7 @@ $name="Node2"
 mach create $name
 machine LoadPlatformDescription $repl
 connector Connect sysbus.ethernet switch1
+connector Connect sysbus.fdcan1 canHub1
 
 showAnalyzer sysbus.usart2
 

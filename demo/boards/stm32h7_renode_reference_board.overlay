@@ -6,4 +6,8 @@
 		sector-size = <512>;
 		sector-count = <256>;
 	};
+
+	aliases {
+		multinode-can = &fdcan1;
+	};
 };

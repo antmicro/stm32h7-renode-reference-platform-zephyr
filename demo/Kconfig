@@ -125,6 +125,52 @@ config DEMO_MULTINODE_ETH_SERVER_THRD_PRIO
 
 endif # DEMO_MULTINODE_ETH
 
+config DEMO_MULTINODE_CAN
+	bool "CAN backend"
+	default y
+	select CAN
+	select POLL
+	help
+	  Enable CAN backend.
+
+if DEMO_MULTINODE_CAN
+
+config DEMO_MULTINODE_CAN_REQ_MSG_ID
+	hex "Can Request Message ID"
+	default 0x25
+	help
+	  CAN message ID used by request messages.
+
+config DEMO_MULTINODE_CAN_RESP_MSG_ID
+	hex "Can Response Message ID"
+	default 0x26
+	help
+	  CAN message ID used by response messages.
+
+config DEMO_MULTINODE_CAN_RX_QUEUE_SIZE
+	int "CAN demo receive queue size"
+	default 5
+	range 1 256
+	help
+	  Maximum number of CAN frames in the CAN multinohde demo receive queue.
+
+config DEMO_MULTINODE_CAN_TIMEOUT
+	int "Message transfer timeout"
+	default 1000
+	help
+	  How long to wait for messages (in ms).
+
+config DEMO_MULTINODE_CAN_LISTEN_THRD_STACK_SIZE
+	int "Listen thread stack size"
+	default 512
+
+config DEMO_MULTINODE_CAN_LISTEN_THRD_PRIO
+	int "Listen thread priority"
+	default 5
+
+
+endif # DEMO_MULTINODE_CAN
+
 endif # DEMO_MULTINODE
 
 endmenu

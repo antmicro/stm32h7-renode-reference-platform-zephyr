@@ -10,3 +10,4 @@ target_sources(app PRIVATE src/potentiometer.c src/flash_store.c)
 
 target_sources_ifdef(CONFIG_DEMO_USB app PRIVATE src/usbdev.c)
 target_sources_ifdef(CONFIG_DEMO_MULTINODE app PRIVATE src/multinode.c)
+target_sources_ifdef(CONFIG_DEMO_MULTINODE_ETH app PRIVATE src/multinode_eth.c)

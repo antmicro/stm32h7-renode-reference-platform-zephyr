@@ -8,7 +8,7 @@ variables:
   SCALENODE_DISK: 10
   DEBIAN_FRONTEND: noninteractive
   ZEPHYR_SDK_INSTALL_DIR: /opt/toolchains
-  ZEPHYR_REV: c605ea46e15fb9bdd518670258a8a52d8850d8f4
+  ZEPHYR_REV: 6607bdd711f49a6d1a971b3d6da2075cd918d8ed
 
 Clang Format:
   stage: lint

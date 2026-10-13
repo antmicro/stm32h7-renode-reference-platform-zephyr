@@ -11,3 +11,23 @@
 		multinode-can = &fdcan1;
 	};
 };
+
+&veml7700 {
+	friendly-name = "Light intensity sensor";
+};
+
+&iis2mdc {
+	friendly-name = "Magnetometer";
+};
+
+&tmp108 {
+	friendly-name = "Temperature sensor";
+};
+
+&lps25hb {
+	friendly-name = "Barometer";
+};
+
+&lsm6dso {
+	friendly-name = "Accelerometer + Gyroscope";
+};

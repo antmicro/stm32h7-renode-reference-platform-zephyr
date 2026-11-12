@@ -42,12 +42,13 @@ west simulate
 
 ### Multinode demo
 
-To test the `multinode` demo commands inside Renode, you need to setup two simulated instances of
-the board. This setup is provided in `support/multinode_demo.resc`. To run the simulation, after
-building the demo, run:
+To test the `multinode` demo commands inside Renode, you need to setup two simulated instances of the board.
+This setup is provided in
+[stm32h7_renode_reference_board.resc](https://github.com/antmicro/renode/blob/master/scripts/multi-node/stm32h7_renode_reference_board.resc).
+To run the simulation, after building the demo, run:
 
 ```sh
-renode support/multinode_demo.resc
+renode scripts/multi-node/stm32h7_renode_reference_board.resc
 ```
 
 # Demo

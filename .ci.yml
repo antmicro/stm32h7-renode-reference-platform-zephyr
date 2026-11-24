@@ -41,7 +41,7 @@ Build Demo:
     - west init -l .
     - west update -n -o=--depth=1
   script:
-    - west build -b stm32h7_renode_reference_board demo
+    - west build -b stm32h7_renode_reference_platform demo
     - mv build/zephyr/zephyr.elf build/zephyr/zephyr_rrp-demo.elf
   artifacts:
     paths:
